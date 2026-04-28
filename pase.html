@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pase · Kamila Arianna XV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --aurum:       #C9A96E;
+      --aurum-light: #e8d5b0;
+      --rose:        #FFB0C9;
+      --blush:       #FFF0F5;
+      --dark:        #3d1a2b;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: #1a0a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ── TARJETA ── */
+    .card {
+      width: 420px;
+      min-height: 680px;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(201,169,110,.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Foto superior */
+    .card-photo {
+      width: 100%;
+      height: 340px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .card-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+    .card-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(61,26,43,.15) 0%,
+        rgba(61,26,43,.0) 40%,
+        rgba(61,26,43,.85) 100%
+      );
+    }
+    .card-photo-text {
+      position: absolute;
+      bottom: 28px;
+      left: 0; right: 0;
+      text-align: center;
+    }
+    .card-pre {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 6px;
+      font-size: .6rem;
+      color: var(--aurum-light);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .card-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.4rem;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 20px rgba(0,0,0,.4);
+    }
+    .card-xv {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .75rem;
+      font-weight: 300;
+      letter-spacing: 7px;
+      color: var(--aurum-light);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* Cuerpo */
+    .card-body {
+      background: var(--blush);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 36px 28px;
+      gap: 0;
+    }
+
+    /* Línea dorada */
+    .gold-line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--aurum), transparent);
+      margin: 0 auto 24px;
+    }
+
+    /* Fecha */
+    .card-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .card-date strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--aurum);
+    }
+
+    /* Ornamento central */
+    .ornament {
+      font-size: 1.1rem;
+      color: var(--aurum);
+      letter-spacing: 12px;
+      margin-bottom: 24px;
+    }
+
+    /* Familia */
+    .family-block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .family-item {
+      text-align: center;
+    }
+    .family-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 4px;
+      font-size: .6rem;
+      text-transform: uppercase;
+      color: var(--aurum);
+      margin-bottom: 5px;
+    }
+    .family-names {
+      font-size: .95rem;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .family-amp {
+      color: var(--aurum);
+      font-style: italic;
+    }
+
+    /* Divider ornament */
+    .div-orn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin: 4px 0 20px;
+    }
+    .div-orn::before, .div-orn::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+    }
+    .div-orn::before { background: linear-gradient(90deg, transparent, var(--aurum)); }
+    .div-orn::after  { background: linear-gradient(90deg, var(--aurum), transparent); }
+    .div-orn span { color: var(--aurum); font-size: 10px; }
+
+    /* Evento */
+    .event-block {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .event-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 12px;
+      text-align: center;
+      border: 1px solid rgba(201,169,110,.25);
+    }
+    .event-label {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: .58rem;
+      text-transform: uppercase;
+      color: var(--aurum);
+      margin-bottom: 5px;
+    }
+    .event-hour {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    /* Lugar */
+    .venue-block {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .venue-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 3px;
+    }
+    .venue-addr {
+      font-size: .82rem;
+      font-style: italic;
+      color: #9b7a88;
+      line-height: 1.5;
+    }
+
+    /* Dress code */
+    .dress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dark);
+      border-radius: 50px;
+      padding: 10px 24px;
+      margin-bottom: 24px;
+    }
+    .dress-row span {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 5px;
+      font-size: .65rem;
+      text-transform: uppercase;
+      color: var(--aurum-light);
+    }
+
+    /* Firma */
+    .card-firma {
+      text-align: center;
+      margin-top: 4px;
+    }
+    .firma-con {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 4px;
+      font-size: .58rem;
+      text-transform: uppercase;
+      color: #9b7a88;
+      margin-bottom: 4px;
+    }
+    .firma-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--aurum);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      html, body { background: #fff; }
+      .card {
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        page-break-inside: avoid;
+      }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 460px) {
+      .card { width: 100%; border-radius: 0; min-height: 100vh; }
+      .card-photo { height: 55vw; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- FOTO + NOMBRE -->
+  <div class="card-photo">
+    <img src="photos/pase.jpg" alt="Kamila Arianna" />
+    <div class="card-photo-overlay"></div>
+    <div class="card-photo-text">
+      <p class="card-pre">Una noche mágica</p>
+      <h1 class="card-name">Kamila Arianna</h1>
+      <p class="card-xv">Mis Quince Años</p>
+    </div>
+  </div>
+
+  <!-- CUERPO -->
+  <div class="card-body">
+
+    <div class="gold-line"></div>
+
+    <p class="card-date">
+      Sábado <strong>23 · Mayo · 2026</strong>
+    </p>
+
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- Familia -->
+    <div class="family-block">
+      <div class="family-item">
+        <p class="family-label">Mis Padres</p>
+        <p class="family-names">
+          Aldo Giovanni Hernández Montes
+          <span class="family-amp">&amp;</span>
+          Saira Fuentes Castillo
+        </p>
+      </div>
+      <div class="div-orn"><span>✦</span></div>
+      <div class="family-item">
+        <p class="family-label">Mis Madrinas</p>
+        <p class="family-names">
+          María de los Ángeles Montes Hernández
+          <span class="family-amp">&amp;</span>
+          Emma Castillo Cruz
+        </p>
+      </div>
+    </div>
+
+    <div class="gold-line"></div>
+    <br/>
+
+    <!-- Evento -->
+    <div class="event-block">
+      <div class="event-item">
+        <p class="event-label">Recepción</p>
+        <p class="event-hour">2:30 pm</p>
+      </div>
+      <div class="event-item">
+        <p class="event-label">Celebración</p>
+        <p class="event-hour">3:00 pm</p>
+      </div>
+    </div>
+
+    <!-- Lugar -->
+    <div class="venue-block">
+      <p class="venue-name">Jardín San Miguel</p>
+      <p class="venue-addr">Poniente 3 Tlalminulpa<br>Atitalaquia, Hidalgo</p>
+    </div>
+
+    <!-- Dress code -->
+    <div class="dress-row">
+      <span>👗 &nbsp; Código de vestimenta · De Gala</span>
+    </div>
+
+    <!-- Firma -->
+    <div class="card-firma">
+      <p class="firma-con">Con cariño</p>
+      <p class="firma-name">Kamila Arianna</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
